@@ -2,16 +2,21 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { getArticleByID } from "../src/api";
 import { useParams } from "react-router-dom";
+import Comments from "./Comments";
 
 export default function SingleArticle() {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getArticleByID(article_id).then((article) => {
       setArticle(article);
+      setIsLoading(false);
     });
-  });
+  }, [article_id]);
+
+  if (isLoading) return <p>Loading article...</p>;
 
   return (
     <div className="single-article">
@@ -23,6 +28,7 @@ export default function SingleArticle() {
         <p>Topic: {article.topic}</p>
         <p>Votes: {article.votes}</p>
         <p>Comments: {article.comment_count}</p>
+        <Comments article_id={article.article_id} />
       </div>
     </div>
   );
