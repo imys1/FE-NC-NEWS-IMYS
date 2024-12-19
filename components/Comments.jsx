@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "../src/api";
 import CommentCard from "./CommentCard";
 import PostingComments from "./PostingComments";
+import DeletingComments from "./DeletingComments";
 
 export default function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
@@ -9,6 +10,7 @@ export default function Comments({ article_id }) {
 
   useEffect(() => {
     getCommentsByArticleId(article_id).then((comment) => {
+      // setComments((prevComment) => [newComment.comment, ...prevComment]);
       setComments(comment);
       setIsLoading(false);
     });
@@ -27,7 +29,12 @@ export default function Comments({ article_id }) {
       ) : (
         <ul className="comments-list">
           {comments.map((comment) => {
-            return <CommentCard key={comment.comment_id} comment={comment} />;
+            return (
+              <>
+                <DeletingComments comment_id={comment.comment_id} />
+                <CommentCard key={comment.comment_id} comment={comment} />
+              </>
+            );
           })}
         </ul>
       )}
