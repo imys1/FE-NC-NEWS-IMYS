@@ -9,7 +9,7 @@ export default function DeletingComments({ comment_id }) {
   };
 
   if (isDeleted) {
-    return <div>Thanks for voting!</div>;
+    return <div>Your Comment Is Deleted!</div>;
   }
 
   return (
