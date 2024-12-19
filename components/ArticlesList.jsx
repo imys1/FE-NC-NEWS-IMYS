@@ -6,7 +6,6 @@ export default function ArticlesList() {
   const [articles, setArticles] = useState([]);
   const [searchParams] = useSearchParams();
   const { topic } = useParams();
-  console.log(topic);
 
   useEffect(() => {
     getAllArticles(topic).then((articles) => {
