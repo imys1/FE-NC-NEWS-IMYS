@@ -16,6 +16,10 @@ h1 {
   padding: 100px;
 }
 
+.votes {
+  padding: 2%;
+}
+
 /* .articles-list {
   background-color: blue;
 } */

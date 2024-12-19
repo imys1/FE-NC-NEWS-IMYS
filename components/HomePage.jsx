@@ -36,7 +36,7 @@ export default function HomePage() {
           <Link to="/">Home Page</Link>
         </li>
         <li>
-          <Link to="/articles">Coding</Link>
+          <Link to="/topics/coding">Coding</Link>
         </li>
         <li>
           <Link to="/topics/football">Football</Link>
